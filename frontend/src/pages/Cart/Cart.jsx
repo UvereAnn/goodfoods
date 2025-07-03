@@ -72,12 +72,12 @@ const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>₦{3000}</p>
+              <p>₦{getTotalCartAmount() === 0 ? 0 : 3000}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>₦{getTotalCartAmount() + 3000}</b>
+              <b>₦{getTotalCartAmount()===0?0:getTotalCartAmount() + 3000}</b>
             </div>
           </div>
           <button onClick={() => navigate("/order")}>
