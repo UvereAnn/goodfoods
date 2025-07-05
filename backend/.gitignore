@@ -1,0 +1,16 @@
+# Node dependencies
+node_modules/
+
+# dotenv environment
+.env
+
+# logs
+logs
+*.log
+
+# uploads folder
+uploads/
+
+# system
+.DS_Store
+Thumbs.db
