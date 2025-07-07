@@ -1,4 +1,3 @@
-import React from "react";
 import "./Footer.css";
 import { assets } from "../../assets/assets";
 
@@ -7,7 +6,7 @@ const Footer = () => {
     <div className="footer" id="footer">
       <div className="footer-content">
         <div className="footer-content-left">
-          <img src={assets.logo} alt="logo image" />
+          <img src={assets.footer_logo} alt="logo image" />
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
