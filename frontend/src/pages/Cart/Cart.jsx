@@ -10,6 +10,7 @@ const Cart = () => {
     removeFromCart,
     addToCart,
     getTotalCartAmount,
+    url,
   } = useContext(StoreContext);
 
   const navigate = useNavigate();
@@ -32,7 +33,10 @@ const Cart = () => {
             return (
               <div>
                 <div className="cart-items-title cart-items-item">
-                  <img src={item.image} alt="selected item" />
+                  <img
+                    src={`${url}/images/${item.image}`}
+                    alt="selected item"
+                  />
                   <p>{item.name}</p>
                   <p>₦{item.price}</p>
                   <p>
@@ -77,7 +81,9 @@ const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>₦{getTotalCartAmount()===0?0:getTotalCartAmount() + 3000}</b>
+              <b>
+                ₦{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 3000}
+              </b>
             </div>
           </div>
           <button onClick={() => navigate("/order")}>
