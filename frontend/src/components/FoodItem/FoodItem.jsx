@@ -11,7 +11,17 @@ const FoodItem = ({ id, name, price, description, image }) => {
     <div className="food-item">
       <div className="food-item-img-container">
         {/*<img className="food-item-image" src={url+"/images/"+image} alt="food item image" />//OLD LOGIC*/}
-        <img className="food-item-image" src={image} alt="food item image" />
+        <img
+          className="food-item-image"
+          src={image}
+          alt="food item image"
+          loading="lazy"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src =
+              "https://via.placeholder.com/150?text=Image+Unavailable";
+          }}
+        />
         {/* New logic to handle image loading */}
 
         {!cartItems[id] ? (

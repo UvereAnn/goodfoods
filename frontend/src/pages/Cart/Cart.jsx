@@ -37,7 +37,16 @@ const Cart = () => {
                     src={`${url}/images/${item.image}`}
                     alt="selected item"
                   />* OLD LOGIC */}
-                  <img src={item.image} alt="selected item" />
+                  <img
+                    src={item.image}
+                    alt="selected item"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src =
+                        "https://via.placeholder.com/150?text=Image+Unavailable";
+                    }}
+                  />
                   {/* New logic to handle image loading */}
                   <p>{item.name}</p>
                   <p>₦{item.price}</p>
