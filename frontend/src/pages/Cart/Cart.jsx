@@ -33,10 +33,12 @@ const Cart = () => {
             return (
               <div>
                 <div className="cart-items-title cart-items-item">
-                  <img
+                  {/*<img
                     src={`${url}/images/${item.image}`}
                     alt="selected item"
-                  />
+                  />* OLD LOGIC */}
+                  <img src={item.image} alt="selected item" />
+                  {/* New logic to handle image loading */}
                   <p>{item.name}</p>
                   <p>₦{item.price}</p>
                   <p>
