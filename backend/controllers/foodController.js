@@ -2,6 +2,7 @@ import foodModel from "../models/foodModel.js";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import cloudinary from "../config/cloudinary.js";
 
 // for ES modules, define __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -10,6 +11,28 @@ const __dirname = path.dirname(__filename);
 // ---------------------------
 // ADD FOOD ITEM
 // ---------------------------
+const addFood = async (req, res) => {
+  try {
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "goodfoods",
+    });
+
+    const food = new foodModel({
+      name: req.body.name,
+      description: req.body.description,
+      price: req.body.price,
+      category: req.body.category,
+      image: result.secure_url, // save Cloudinary URL
+    });
+
+    await food.save();
+    res.json({ success: true, message: "Food Added" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Error uploading image" });
+  }
+};
+/* //OLD LOGIC
 const addFood = async (req, res) => {
   //let image_filename = `$req.file.filename`;
 
@@ -30,7 +53,7 @@ const addFood = async (req, res) => {
     res.json({ success: false, message: "Error" });
   }
 };
-
+*/
 
 // ---------------------------
 // LIST FOOD ITEMS
