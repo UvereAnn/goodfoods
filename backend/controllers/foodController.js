@@ -102,17 +102,4 @@ const removeFood = async (req, res) => {
   }
 };
 
-const result = await cloudinary.uploader.upload(req.file.path, {
-  folder: "goodfoods",
-  transformation: [
-    {
-      width: 300,
-      height: 300,
-      crop: "fill",
-      quality: "auto",
-      fetch_format: "auto",
-    },
-  ],
-});
-
 export { addFood, listFood, removeFood };
